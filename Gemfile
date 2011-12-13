@@ -20,7 +20,7 @@ end
 gem 'jquery-rails'
 gem 'simple_form'
 gem 'bootstrap-rails', :git => "git://github.com/yakjuly/bootstrap-rails.git"
-
+gem 'heroku'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
