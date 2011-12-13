@@ -1,0 +1,27 @@
+<h1>Listing users_widgets</h1>
+
+<table>
+  <tr>
+    <th>User</th>
+    <th>Widget</th>
+    <th>Weight</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @users_widgets.each do |users_widget| %>
+  <tr>
+    <td><%= users_widget.user_id %></td>
+    <td><%= users_widget.widget_id %></td>
+    <td><%= users_widget.weight %></td>
+    <td><%= link_to 'Show', users_widget %></td>
+    <td><%= link_to 'Edit', edit_users_widget_path(users_widget) %></td>
+    <td><%= link_to 'Destroy', users_widget, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Users widget', new_users_widget_path %>

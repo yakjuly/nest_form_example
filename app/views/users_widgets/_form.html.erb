@@ -1,0 +1,29 @@
+<%= form_for(@users_widget) do |f| %>
+  <% if @users_widget.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@users_widget.errors.count, "error") %> prohibited this users_widget from being saved:</h2>
+
+      <ul>
+      <% @users_widget.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :user_id %><br />
+    <%= f.number_field :user_id %>
+  </div>
+  <div class="field">
+    <%= f.label :widget_id %><br />
+    <%= f.number_field :widget_id %>
+  </div>
+  <div class="field">
+    <%= f.label :weight %><br />
+    <%= f.number_field :weight %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>User:</b>
+  <%= @users_widget.user_id %>
+</p>
+
+<p>
+  <b>Widget:</b>
+  <%= @users_widget.widget_id %>
+</p>
+
+<p>
+  <b>Weight:</b>
+  <%= @users_widget.weight %>
+</p>
+
+
+<%= link_to 'Edit', edit_users_widget_path(@users_widget) %> |
+<%= link_to 'Back', users_widgets_path %>

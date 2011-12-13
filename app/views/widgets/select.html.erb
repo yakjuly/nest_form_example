@@ -1,0 +1,32 @@
+<h1>Listing widgets</h1>
+
+<ul id='widgets_list'>
+<% @widgets.each do |widget| %>
+  <%= widget_item(widget) %>
+  
+<% end %>
+</ul>
+
+<br />
+
+<%= simple_form_for Widget.new, :remote => true, :id => "new-form" do |f| %>
+  <%= f.input :name %>
+  <%= f.submit "add widget" %>
+<% end %>
+
+<script type="text/javascript">
+  var obj_id = "<%= params[:obj_id] %>";
+  
+  function select_widget(opts) {
+    top.$("#" + obj_id).val(opts.id);
+    top.$("#" + obj_id).parents(".fields").find(".selected_widget").html(opts.name);
+    
+    for(var i = 0; i < top.$.dialog.list.length ; i++) {
+      var dialog  = top.$.dialog.list[i];
+      if (dialog != null) { 
+        dialog.dialog("close");
+      }
+      
+    }
+  }
+</script>

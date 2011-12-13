@@ -1,0 +1,42 @@
+<%= bootstrap_form_for @user do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.input :name %>
+  
+  <%= f.fields_for :users_widgets do |uw| %>
+    <div>
+      <%= link_to_function "select widget", "openSelectIframe(this)" %>
+    </div>
+    <div class='selected_widget'>
+      <%= uw.object.widget.try(:name) %>
+    </div>
+    
+    <%= uw.input :widget_id, :as => :hidden %>
+    <%= uw.input :weight %>
+    <%= uw.link_to_remove "destroy", :class => "btn danger" %>
+  <% end %>
+  <p>
+    <%= f.link_to_add "add", :users_widgets, :class => "btn" %>
+  </p>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+
+<script type="text/javascript">
+  function openSelectIframe(link){
+    var obj_id = $(link).parents(".fields").find("input[type='hidden']").attr("id")
+    $.openDialog({url: '/widgets/select?obj_id=' + obj_id});
+  }
+</script>
